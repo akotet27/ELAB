@@ -182,6 +182,14 @@ p {
     max-width: 820px;
 }
 
+.welcome-msg {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent);
+    max-width: 820px;
+    margin: 0 0 0.9rem;
+}
+
 .hero-copy {
     font-size: 1.1rem;
     color: var(--muted);
@@ -288,7 +296,9 @@ p {
 }
 
 .team-grid {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: 1fr;
+    max-width: 640px;
+    margin: 0 auto;
     align-items: start;
 }
 
@@ -749,7 +759,8 @@ th {
 .team-card img {
     width: 100%;
     aspect-ratio: 3 / 2;
-    object-fit: cover;
+    object-fit: contain;
+    background: rgba(0, 71, 171, 0.05);
     border-radius: 1rem;
     border: 4px solid rgba(0, 71, 171, 0.12);
     display: block;
@@ -781,12 +792,14 @@ th {
 
 .flag {
     display: inline-block;
+    position: relative;
     flex-shrink: 0;
     width: 1.7rem;
     height: 1.15rem;
     border-radius: 3px;
     border: 1px solid rgba(30, 41, 59, 0.15);
     background-size: 100% 100%;
+    overflow: hidden;
 }
 
 .flag-ci {
@@ -804,14 +817,19 @@ th {
 
 .flag-bi {
     background-image:
-        radial-gradient(circle at 50% 50%, #ffffff 22%, transparent 23%),
+        radial-gradient(circle at 50% 30%, #CE1126 7%, transparent 8%),
+        radial-gradient(circle at 34% 65%, #CE1126 7%, transparent 8%),
+        radial-gradient(circle at 66% 65%, #CE1126 7%, transparent 8%),
+        radial-gradient(circle at 50% 50%, #ffffff 24%, transparent 25%),
         linear-gradient(45deg, transparent calc(50% - 1.2px), #ffffff calc(50% - 1.2px), #ffffff calc(50% + 1.2px), transparent calc(50% + 1.2px)),
         linear-gradient(-45deg, transparent calc(50% - 1.2px), #ffffff calc(50% - 1.2px), #ffffff calc(50% + 1.2px), transparent calc(50% + 1.2px)),
         conic-gradient(from -45deg at 50% 50%, #CE1126 0deg 90deg, #1EB53A 90deg 180deg, #CE1126 180deg 270deg, #1EB53A 270deg 360deg);
 }
 
 .flag-rw {
-    background-image: linear-gradient(to bottom,
+    background-image:
+        radial-gradient(circle at 78% 28%, #FAD201 16%, transparent 17%),
+        linear-gradient(to bottom,
             #00A1DE 0% 50%,
             #FAD201 50% 60%,
             #007A33 60% 100%);
@@ -824,6 +842,30 @@ th {
             #DA121A 66.66% 100%);
 }
 
+.flag-et::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: #3E62AD;
+    transform: translate(-50%, -50%);
+}
+
+.flag-et::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.32rem;
+    height: 0.32rem;
+    background: #FCDD09;
+    transform: translate(-50%, -50%);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
 .flag-cd {
     background-image: linear-gradient(135deg,
             #007FFF 0% 40%,
@@ -831,6 +873,17 @@ th {
             #CE1021 43% 57%,
             #F7D618 57% 60%,
             #007FFF 60% 100%);
+}
+
+.flag-cd::after {
+    content: "";
+    position: absolute;
+    top: 0.15rem;
+    left: 0.2rem;
+    width: 0.24rem;
+    height: 0.24rem;
+    background: #F7D618;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
 
 .social-links {
@@ -973,7 +1026,6 @@ th {
         order: -1;
     }
 
-    .team-grid,
     .stats-grid {
         grid-template-columns: 1fr 1fr;
     }
